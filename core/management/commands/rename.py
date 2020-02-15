@@ -17,8 +17,8 @@ class Command(BaseCommand):
 
         # logic for renaming the files
 
-        files_to_rename = [f'{current_project_name}/settings.py',
-                           f'{current_project_name}/wsgi.py', 'manage.py']
+        files_to_rename = [f'{current_project_name}/settings/base.py',
+                           f'{current_project_name}/settings/wsgi.py', 'manage.py']
 
         for f in files_to_rename:
             with open(f, 'r') as file:
