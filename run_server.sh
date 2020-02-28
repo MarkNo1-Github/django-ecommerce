@@ -1,3 +1,3 @@
 #! /bin/bash
 
- uwsgi --ini plume_uwsgi.ini 
+ uwsgi --ini uwsgi/plume_uwsgi.ini 
