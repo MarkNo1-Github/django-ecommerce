@@ -13,13 +13,15 @@ FILE_UWSGI_PATH=${PLUME_SERVER_PATH}/uwsgi/plume_uwsgi.ini
 
 echo "Deploying Server - v1"
 echo "Path: $PLUME_SERVER_PATH"
+echo "Ip: $IP"
 echo "Port: $PORT"
 
 replace() {
     local search=$1
     local replace=$2
     local file=$3
-    sed -i "s/${search}/${replace}/g" $file
+    sed -i "s~${search}~${replace}~" $file
+
 }
 
 # NGIX
@@ -28,7 +30,7 @@ replace @SERVER $PLUME_SERVER_PATH $FILE_NGIX_PATH
 replace @PORT $PORT $FILE_NGIX_PATH
 replace @IP $IP $FILE_NGIX_PATH
 # Make Symbolic Link
-ln -s $FILE_NGIX_PATH etc/nginx/sites-enable/plume_website.conf
+ln -s $FILE_NGIX_PATH /etc/nginx/sites-enable
 
 
 # UWSGI
